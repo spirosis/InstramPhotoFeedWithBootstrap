@@ -1,143 +1,427 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>4Geeks Academy</title>
-		<link rel="stylesheet" href="instagram.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Instragram Photo Feed</title>
 </head>
-
-
-
-</head>
-<body class="cuerpo">
-    <header>
-        <strong><h1>Breathe Code PhotoFeed</h1></strong>
-    </header>
-
-    <section>
-        <div class="box">
-            <div class="header">
-                <p class="date">12/21</p>
-                <h2>My first post</h2>
-            </div>
-            
-            <div class="image">
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="http://www.instagram.com">
+          <i class="fa-brands fa-instagram fa-xs"> Instagram</i> 
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" 
+        data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" 
+        aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
                 
-                <img id="slider-image" src="image1.jpg" alt="Image">
-                <button class="prev-button" onclick="prevImage()">&#10092;</button>
-                <button class="next-button" onclick="nextImage()">&#10093;</button>
-            </div>
-            <script src="script.js"></script>
+                    <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fas fa-plus"></i> Create Post <!-- Font Awesome plus icon -->
+                    </button>
+                
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
 
-            <div class="actions">
-                <i class="fas fa-heart"></i>
-                <i class="fas fa-comment"></i>
-                <i class="fas fa-share"></i>
-                <i id="tag" class="fas fa-tag"></i>
-            </div>
-            <div class="caption">Esta foto me emociona la pistola!</div>
-        </div>    
-    </section>
+                      <!-- Title of modal here -->  
+                      
+                        <h5 class="modal-title" id="exampleModalLabel">Create a new post</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Text area title -->
+                          <div class="mb-3">
+                          <label class="form-label">Caption:</label>
+                          <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <!-- buttons for Photo and location -->
+                        <button class="btn btn-light border" type="button" id="settingsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa-solid fa-camera"></i>
+                        </button>
+                        <button class="btn btn-light border" type="button" id="settingsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa-solid fa-location-dot"></i>
+                        </button>
+                      </div>
 
+                      <!-- Name of buttons of modal here --> 
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-success">Publish</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="settingsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-cog"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="settingsDropdown">
+                      <!-- Dropdown items here -->
+                      <a class="dropdown-item" href="#">Profile</a>
+                      <a class="dropdown-item" href="#">Accesibility</a>
+                      <a class="dropdown-item" href="#">Privacy and data</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item text-danger" href="#"> Logout </a>
+                  </div>
+                </div>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- Nav Tabs -->
+    <div class="row">
+      <ul class="nav nav-tabs mb-3 border-0" id="pills-tab" role="tablist">
+        <li class="nav-item ml-auto">
+          <a class="nav-link active border-0" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-3x3" viewBox="0 0 16 16">
+              <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5V5h4V1H1.5zM5 6H1v4h4V6zm1 4h4V6H6v4zm-1 1H1v3.5a.5.5 0 0 0 .5.5H5v-4zm1 0v4h4v-4H6zm5 0v4h3.5a.5.5 0 0 0 .5-.5V11h-4zm0-1h4V6h-4v4zm0-5h4V1.5a.5.5 0 0 0-.5-.5H11v4zm-1 0V1H6v4h4z"/>
+            </svg>
+          </a>
+        </li>
+        
+
+        <li class="nav-item mr-auto" role="presentation">
+          <button class="nav-link border-0" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+              <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"/>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+    
+
+
+    <div class="tab-content" id="pills-tabContent">
+
+      <!-- One Row 3 Images-->
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        
+  <div class="container-fluid">  
+    <div class="container mt-2">
+      <div class="row">
+          <!-- 1 Row -->
+          <div class="col-md-4">
+              <div class="square-photo">
+                  <img src="https://www.trebuchet-magazine.com/wp-content/uploads/2020/08/812625bcdea15680458a8af778b1f9d0.jpg" alt="Photo 1">
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="square-photo">
+                  <img src="https://www.gothicangelclothing.co.uk/wp-content/uploads/2015/07/tumblr_mkuk05vzfJ1rm1bf5o1_1280.jpg" alt="Photo 2">
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="square-photo">
+                  <img src="https://img.freepik.com/premium-photo/3d-illustration-highend-luxury-stylish-apartment-interior-architecture_997428-589.jpg" alt="Photo 3">
+              </div>
+          </div>
+
+          <!-- 2nd Row -->
+          <div class="col-md-4">
+              <div class="square-photo">
+                  <img src="https://wallpapers.com/images/featured/cute-dog-brtwwfga72pilv0j.jpg" alt="Photo 4">
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="square-photo">
+                  <img src="https://wallpaperset.com/w/full/e/8/e/499678.jpg" alt="Photo 5">
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="square-photo">
+                  <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9f3f9bd9-0673-4276-bb34-71ece2a5820e/dfwb96j-d7a5af67-f52e-43cf-a63c-45bf072ff7d2.png/v1/fill/w_1920,h_1120,q_80,strp/steampunk_world__1___ai_art__by_3d1viner_dfwb96j-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTEyMCIsInBhdGgiOiJcL2ZcLzlmM2Y5YmQ5LTA2NzMtNDI3Ni1iYjM0LTcxZWNlMmE1ODIwZVwvZGZ3Yjk2ai1kN2E1YWY2Ny1mNTJlLTQzY2YtYTYzYy00NWJmMDcyZmY3ZDIucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.oizZ8f4S3UdRbwPbkHd2y2OVFsir0qYJI0ShnSuQfkk" alt="Photo 6">
+              </div>
+          </div>
+
+          <!-- 3rd Row -->
+          <div class="col-md-4">
+              <div class="square-photo">
+                  <img src="https://images7.alphacoders.com/132/1327212.png" alt="Photo 7">
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="square-photo">
+                  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd/cc1bd5136760155.61ffa81f4ac9b.jpg" alt="Photo 8">
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="square-photo">
+                  <img src="https://img.freepik.com/premium-photo/castle-s-underground-tunnel-is-lit-by-candles-daylight_76964-1157.jpg" alt="Photo 9">
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+      </div>
+
+      <!-- One Row 1 Images-->
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div class="container mt-2">
+          <!-- Card 1 -->
+          <div class="row">
+              <div class="col-md-4 mx-auto">
+                  <div class="card custom-card">
+                      <div class="card-header">
+                          <div class="row">
+                              <div class="col-6">
+                                  <h5 class="card-title">Giger on Ai</h5>
+                              </div>
+                              <div class="col-6 text-right">
+                                  <p class="card-text">2/7</p>
+                              </div>
+                          </div>
+                      </div>
+                      <img src="https://www.trebuchet-magazine.com/wp-content/uploads/2020/08/812625bcdea15680458a8af778b1f9d0.jpg" alt="Photo 1" class="img-fluid">
+                      <div class="card-body">
+                          <p class="liked-by">Liked by 3643 people</p>
+                          <p class="card-text">Giger was quite a badass!</p>
+                      </div>
+                  </div>
+              </div>
+          </div>  
+
+
+          <!-- Card 2 -->
+          <div class="row">
+              <div class="col-md-4 mx-auto">
+                  <div class="card custom-card">
+                      <div class="card-header">
+                          <div class="row">
+                              <div class="col-10">
+                                  <h5 class="card-title">My chemical romance</h5>
+                              </div>
+                              <div class="col-2 text-right">
+                                  <p class="card-text">1/5</p>
+                              </div>
+                          </div>
+                      </div>
+                      <img src="https://www.gothicangelclothing.co.uk/wp-content/uploads/2015/07/tumblr_mkuk05vzfJ1rm1bf5o1_1280.jpg" alt="Photo 2">
+                      <div class="card-body">
+                          <p class="liked-by">Liked by <strong>2855</strong>people</p>
+                          <p class="card-text">La depresion pos canina es real #piensenenlosperritos</p>
+                      </div>
+                  </div>
+              </div>
+          </div> 
+
+
+          <!-- Card 3 -->
+          <div class="row">
+              <div class="col-md-4 mx-auto">
+                  <div class="card custom-card">
+                      <div class="card-header">
+                          <div class="row">
+                              <div class="col-10">
+                                  <h5 class="card-title">Las abejas son vida</h5>
+                              </div>
+                              <div class="col-2 text-right">
+                                  <p class="card-text">5/5</p>
+                              </div>
+                          </div>
+                      </div>
+                      <img src="https://img.freepik.com/premium-photo/3d-illustration-highend-luxury-stylish-apartment-interior-architecture_997428-589.jpg" alt="Photo 3">
+                      <div class="card-body">
+                          <p class="liked-by">Liked by <strong>2855</strong> people</p>
+                          <p class="card-text">Vive dentro de un panal poscontemporaneo finisecular interestelar</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+
+          <!-- Card 4 -->
+          <div class="row">
+              <div class="col-md-4 mx-auto">
+                  <div class="card custom-card">
+                      <div class="card-header">
+                          <div class="row">
+                              <div class="col-6">
+                                  <h5 class="card-title">Hunger is persistent</h5>
+                              </div>
+                              <div class="col-6 text-right">
+                                  <p class="card-text">1/5</p>
+                              </div>
+                          </div>
+                      </div>
+                      <img src="https://wallpapers.com/images/featured/cute-dog-brtwwfga72pilv0j.jpg" alt="Photo 4">
+                      <div class="card-body">
+                          <p class="liked-by">Liked by <strong>3231224332855</strong> people</p>
+                          <p class="card-text">That is so cute!!!! #feedmetacos</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+
+          <!-- Card 5 -->
+          <div class="row">
+              <div class="col-md-4 mx-auto">
+                  <div class="card custom-card">
+                      <div class="card-header">
+                          <div class="row">
+                              <div class="col-6">
+                                  <h5 class="card-title">De vacaciones</h5>
+                              </div>
+                              <div class="col-6 text-right">
+                                  <p class="card-text">1/5</p>
+                              </div>
+                          </div>
+                      </div>
+                      <img src="https://wallpaperset.com/w/full/e/8/e/499678.jpg" alt="Photo 5">
+                      <div class="card-body">
+                          <p class="liked-by">Liked by <strong>2855</strong> people</p>
+                          <p class="card-text">Haters gonna hate #especulando</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+
+          <!-- Card 6 -->
+          <div class="row">
+              <div class="col-md-4 mx-auto">
+                  <div class="card custom-card">
+                      <div class="card-header">
+                          <div class="row">
+                              <div class="col-6">
+                                  <h5 class="card-title">La divina tragedia</h5>
+                              </div>
+                              <div class="col-6 text-right">
+                                  <p class="card-text">1/5</p>
+                              </div>
+                          </div>
+                      </div>
+                      <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9f3f9bd9-0673-4276-bb34-71ece2a5820e/dfwb96j-d7a5af67-f52e-43cf-a63c-45bf072ff7d2.png/v1/fill/w_1920,h_1120,q_80,strp/steampunk_world__1___ai_art__by_3d1viner_dfwb96j-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTEyMCIsInBhdGgiOiJcL2ZcLzlmM2Y5YmQ5LTA2NzMtNDI3Ni1iYjM0LTcxZWNlMmE1ODIwZVwvZGZ3Yjk2ai1kN2E1YWY2Ny1mNTJlLTQzY2YtYTYzYy00NWJmMDcyZmY3ZDIucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.oizZ8f4S3UdRbwPbkHd2y2OVFsir0qYJI0ShnSuQfkk" alt="Photo 6">
+                      <div class="card-body">
+                          <p class="liked-by">Liked by <strong>2855</strong> people</p>
+                          <p class="card-text">EL futuro es un sueno que consume nuestra imaginacion y canaliza nuestros esfuerzos</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+
+          <!-- Card 7 -->
+          <div class="row">
+              <div class="col-md-4 mx-auto">
+                  <div class="card custom-card">
+                      <div class="card-header">
+                          <div class="row">
+                              <div class="col-6">
+                                  <h5 class="card-title">Marte nos espera</h5>
+                              </div>
+                              <div class="col-6 text-right">
+                                  <p class="card-text">1/5</p>
+                              </div>
+                          </div>
+                      </div>
+                      <img src="https://images7.alphacoders.com/132/1327212.png" alt="Photo 7">
+                      <div class="card-body">
+                          <p class="liked-by">Liked by <strong>2855</strong> people</p>
+                          <p class="card-text">Living in outer space is an extraordinary adventure that brings boundless joy. In this celestial realm, where gravity no longer dictates our movements, we experience the exhilaration of floating weightlessly through the cosmos. Every day is a cosmic ballet, as we gracefully glide from one part of our space habitat to another.
+
+                              The view from our window is a masterpiece of awe-inspiring beauty, with planets, stars, and galaxies stretching infinitely into the distance. The colors of the universe paint a vibrant tapestry, and each sunrise and sunset is a breathtaking spectacle, unobstructed by earthly horizons.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+
+          <!-- Card 8 -->
+          <div class="row">
+              <div class="col-md-4 mx-auto">
+                  <div class="card custom-card">
+                      <div class="card-header">
+                          <div class="row">
+                              <div class="col-6">
+                                  <h5 class="card-title">La dulzura diabetica</h5>
+                              </div>
+                              <div class="col-6 text-right">
+                                  <p class="card-text">1/5</p>
+                              </div>
+                          </div>
+                      </div>
+                      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd/cc1bd5136760155.61ffa81f4ac9b.jpg" alt="Photo 8">
+                      <div class="card-body">
+                          <p class="liked-by">Liked by <strong>2855</strong> people</p>
+                          <p class="card-text">Living in outer space is an extraordinary adventure that brings boundless joy. In this celestial realm, where gravity no longer dictates our movements, we experience the exhilaration of floating weightlessly through the cosmos. Every day is a cosmic ballet, as we gracefully glide from one part of our space habitat to another.
+
+                              </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+          <!-- Card 9 -->
+          <div class="row">
+              <div class="col-md-4 mx-auto">
+                  <div class="card custom-card">
+                      <div class="card-header">
+                          <div class="row">
+                              <div class="col-6">
+                                  <h5 class="card-title">Lacrimosa Miserere</h5>
+                              </div>
+                              <div class="col-6 text-right">
+                                  <p class="card-text">1/5</p>
+                              </div>
+                          </div>
+                      </div>
+                      <img src="https://img.freepik.com/premium-photo/castle-s-underground-tunnel-is-lit-by-candles-daylight_76964-1157.jpg" alt="Photo 9">
+                      <div class="card-body">
+                          <p class="liked-by">Liked by <strong>2855</strong> people</p>
+                          <p class="card-text">
+                              The view from our window is a masterpiece of awe-inspiring beauty, with planets, stars, and galaxies stretching infinitely into the distance. The colors of the universe paint a vibrant tapestry, and each sunrise and sunset is a breathtaking spectacle, unobstructed by earthly horizons.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- Add more cards here for other photos -->
+      </div>
+      </div>
+      
+    </div>
+      
+
+      
+
+
+    
   
-    <section>
-        <div class="box">
-            <div class="header"> <p class="date">10/21</p>
-                <h2>My first post</h2></div>
-            <div class="image">
-                <img src="https://t6w3k2m6.stackpathcdn.com/wp-content/uploads/2012/01/IMG_6347-square-vertorama.jpg?iv=345">
-                <button class="prev-button">&#10092;</button>
-                <button class="next-button">&#10093;</button>
-            </div>
+  
+  
+  
+     
 
-            <div class="actions">
-                <i class="fas fa-heart"></i>
-                <i class="fas fa-comment"></i>
-                <i class="fas fa-share"></i>
-                <i id="tag" class="fas fa-tag"></i>
-            </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/808988f363.js" crossorigin="anonymous"></script>
 
-            <div class="caption">La belleza de la naturaleza! <strong>#Pistolona #BreathCode </strong> con huevos!</div>
-        </div>    
-    </section>
-
-
-    <section>
-        <div class="box">
-            <div class="header"> <p class="date">08/21</p>
-                <h2>My first post</h2></div>
-            <div class="image">
-                <img src="http://www.jasontheaker.com/images/1x1/Downpour.jpg">
-                <button class="prev-button">&#10092;</button>
-                <button class="next-button">&#10093;</button>
-            </div>
-            <div class="actions">
-                <i class="fas fa-heart"></i>
-                <i class="fas fa-comment"></i>
-                <i class="fas fa-share"></i>
-                <i id="tag" class="fas fa-tag"></i>
-            </div>
-            <div class="caption">La belleza de la naturaleza!</div>
-        </div>    
-    </section>
-
-
-    <section>
-        <div class="box">
-            <div class="header"> <p class="date">05/21</p>
-                <h2>My first post</h2></div>
-            <div class="image">
-                <img src="https://www.manfrottoschoolofxcellence.com/wp-content/uploads/2017/06/Square-Hanging-On-Derwentwater.jpg">
-                <button class="prev-button">&#10092;</button>
-                <button class="next-button">&#10093;</button>
-            </div>
-            <div class="actions">
-                <i class="fas fa-heart"></i>
-                <i class="fas fa-comment"></i>
-                <i class="fas fa-share"></i>
-                <i id="tag" class="fas fa-tag"></i>
-            </div>
-
-            <div class="caption">No tengan miedo al B/N! <strong>#B/WPhoto</strong></div>
-        </div>    
-    </section>
-
-
-
-    <section>
-        <div class="box">
-            <div class="header"> <p class="date">12/21</p>
-                <h2>My first post</h2></div>
-            <div class="image">
-                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd/f1006b58090479.59ef528e92964.jpg">
-                <button class="prev-button">&#10092;</button>
-                <button class="next-button">&#10093;</button>    
-            </div>
-            <div class="actions">
-                <i class="fas fa-heart"></i>
-                <i class="fas fa-comment"></i>
-                <i class="fas fa-share"></i>
-                <i id="tag" class="fas fa-tag"></i>
-            </div>
-            <div class="caption">Increible paisaje de la imaginacion super poderosa!</div>
-        </div>    
-    </section>
-
-    <i class="fas fa-arrow-down"></i>
-    
-    <footer>
-        <i class="fas fa-home"></i>
-        Aqui para arte
-    </footer>
-
-    
-
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+
+
