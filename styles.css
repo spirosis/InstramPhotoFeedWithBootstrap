@@ -1,0 +1,43 @@
+body{
+	align-items: center;
+	
+}
+
+.square-photo {
+	padding-bottom: 100%; /* Maintain a 1:1 proportion ratio for square photos */
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 25px;
+}
+
+.square-photo img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 440px;
+	height: 440px;
+	object-fit: cover;
+	
+}
+
+.custom-card {
+	border: 1px solid #ccc;
+	margin-bottom: 25px; /* Add some spacing between cards */
+	width: 450px;
+	height: auto;
+}
+
+/* Style for the "liked by people" section */
+.liked-by {
+	color: #888;
+}
+
+/* colors for the tabs non active-active states */
+.nav-link {
+	color: grey !important;
+}
+
+.nav-link.active {
+	color: rgb(50, 86, 246) !important;
+}
+
